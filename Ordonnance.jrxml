@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Ordonnance" language="groovy" pageWidth="297" pageHeight="421" columnWidth="257" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="65c8a57c-2426-40fd-8f4e-2e95f73b4f96">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT NOM,SEXE,AGE,PHYSIQUE.MENSURATION_POIDS,ORDONNANCE,ORDONNANCE.AGENT,en_tete_consultation.date_consultation
+FROM ORDONNANCE INNER JOIN IDENTITE
+ON IDENTITE.ID=ORDONNANCE.PATIENT left JOIN PHYSIQUE
+ON IDENTITE.ID=PHYSIQUE.CODE_PERS inner join en_tete_consultation on en_tete_consultation.patient=ORDONNANCE.PATIENT
+]]>
+	</queryString>
+	<field name="NOM" class="java.lang.String"/>
+	<field name="SEXE" class="java.lang.String"/>
+	<field name="AGE" class="java.lang.Integer"/>
+	<field name="MENSURATION_POIDS" class="java.lang.String"/>
+	<field name="ORDONNANCE" class="java.lang.String"/>
+	<field name="AGENT" class="java.lang.String"/>
+	<field name="date_consultation" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="58" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Transparent" x="2" y="-1" width="255" height="57" uuid="f50e2f8e-b1a0-4692-a0d2-3c5dcae38c40"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="56" y="10" width="145" height="12" forecolor="#FFFFFF" backcolor="#006699" uuid="40eed64f-61e3-40d0-adb5-ae0b69b70c45"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROVINCE DU NORD-KIVU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="56" y="22" width="145" height="14" forecolor="#FFFFFF" backcolor="#660066" uuid="af828cde-40f2-40d6-8201-88f543955c4c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REGINA DE LA PACE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="36" width="257" height="20" forecolor="#FFFFFF" backcolor="#330033" uuid="4ed6cc70-53d4-4529-9db6-4a0314fe1990"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[ORDONNANCE MEDICALE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="56" y="0" width="145" height="10" forecolor="#FFFFFF" backcolor="#006699" uuid="3aa2b0a4-1c57-494b-ab0c-92a3eaf904cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPUBLIQUE DEMOCRATIQUE DU CONGO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="2" y="0" width="53" height="36" uuid="20286b5c-dfb8-4eb4-ae46-9fc79b2eaedd"/>
+				<imageExpression><![CDATA[".\\LOGO.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="202" y="0" width="55" height="36" uuid="35ebb34b-398d-4e38-891e-e28229cab1ef"/>
+				<imageExpression><![CDATA[".\\LOGO.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="203" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="3" width="45" height="20" uuid="2570073d-7e72-4d2b-be49-cb4d637820b4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Medecin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="23" width="45" height="20" uuid="a2d9fb76-620a-4375-b8b3-92a05807c085"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PATIENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="43" width="22" height="20" uuid="1d0f92f3-8ec3-417c-8186-6ab8e7784734"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AGE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="43" width="30" height="20" uuid="6984392b-cb81-4dd5-bd87-d5cf185681d9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SEXE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="43" width="42" height="20" uuid="09a124ae-25d7-4ea4-a2ac-3f848b33fca3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[POIDS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="71" width="145" height="20" uuid="9aad9deb-3b36-4f19-a204-8cb20135ba32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ORDONNANCE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="48" y="23" width="100" height="20" uuid="f23b7dac-41b0-41eb-896b-2fc179598d08"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NOM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="92" y="43" width="27" height="20" uuid="e7cef847-8a7c-46b6-9257-a8f0cb8a06ee"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SEXE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="43" width="31" height="20" uuid="6171eedc-d585-4575-a838-0d2073a7436d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{MENSURATION_POIDS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="199" y="43" width="23" height="20" uuid="4963322e-07c9-488b-9aae-700178c118bd"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Kgs]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="25" y="43" width="30" height="20" uuid="d74da4aa-10fb-449f-98b1-22566b9eaba4"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{AGE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="48" y="3" width="100" height="20" uuid="3c2353ef-a241-4f69-9880-e1d8c378f2d7"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{AGENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="96" width="240" height="103" uuid="e6731908-bbf8-4524-a45d-428f915aa637"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{ORDONNANCE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="4" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

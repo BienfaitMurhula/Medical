@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Imagerie" language="groovy" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="99e4aa92-1f17-4e38-8455-a87d62a50ceb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<subDataset name="dataset1" uuid="ed13b3ec-b8da-429d-8ed7-314a274e3d1e"/>
+	<queryString>
+		<![CDATA[select * from imagerieresultat]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="NOM PATIENT" class="java.lang.String"/>
+	<field name="RESULTAT" class="java.lang.String"/>
+	<field name="PHOTO" class="java.io.InputStream"/>
+	<field name="AGENT" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="91" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Transparent" x="1" y="0" width="380" height="65" uuid="719f7806-569b-4735-9e87-19edabacfa35"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="85" y="1" width="210" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="c5078490-4853-4527-bcfa-5271a2197bd0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPUBLIQUE DEMOCRATIQUE DU CONGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="85" y="21" width="210" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="f9419628-b176-4468-8e7a-06e074dec9fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROVINCE DU NORD-KIVU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="85" y="41" width="210" height="24" forecolor="#FFFFFF" backcolor="#660066" uuid="497c2227-56a7-4755-b708-09cb5c95e7b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REGINA DE LA PACE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="66" width="380" height="20" forecolor="#FFFFFF" backcolor="#330033" uuid="9ab28ef2-7c97-4980-8b8e-61665dfff1c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMAGERIE MEDICALE]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="1" width="84" height="64" uuid="abb56a4e-71a9-4d4d-9c69-c7bab141b696"/>
+				<imageExpression><![CDATA["F:\\NetBeansProjects\\Medical\\src\\Rapport\\LOGO.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="297" y="0" width="84" height="64" uuid="15842532-6163-4a16-8190-9d75da8b8918"/>
+				<imageExpression><![CDATA["F:\\NetBeansProjects\\Medical\\src\\Rapport\\LOGO.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="155" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="1" width="57" height="22" uuid="0021863b-6b1f-419b-a713-d1c785f0d445"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NOM PATIENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="36" width="168" height="20" uuid="f083332e-fc96-4087-a3df-1df344c995d4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[RESULTAT DE L'IMAGERIE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="1" width="36" height="22" uuid="8c113335-90ec-431d-8afb-ee8d496530c2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AGENT]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="3" width="132" height="20" uuid="28bc0d2b-7ec8-4769-9373-f09b64e3c331"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOM PATIENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="243" y="2" width="138" height="20" uuid="78bb4e78-b8f4-4a21-812a-dab4229edddb"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AGENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="61" width="178" height="59" uuid="5de94349-ba1c-42ea-9b69-7acc9ec019d3"/>
+				<textFieldExpression><![CDATA[$F{RESULTAT}]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="243" y="30" width="125" height="113" uuid="e944dd84-e114-416c-9ed1-088dbe93f056"/>
+				<imageExpression><![CDATA[$F{PHOTO}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="3" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

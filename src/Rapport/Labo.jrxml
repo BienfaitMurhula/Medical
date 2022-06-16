@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Labo" language="groovy" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="69f59fe9-6225-47e5-a35e-2f2e20ca0dd0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT RESULTAT.ID, NOM as [NOM DU MALADE], RESULTAT.AGENT AS [NOM MEDECIN], RESULTAT AS [RESULTAT DU LABO] FROM RESULTAT inner join IDENTITE on IDENTITE.ID=resultat.ID_PERSONNE]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="NOM DU MALADE" class="java.lang.String"/>
+	<field name="NOM MEDECIN" class="java.lang.String"/>
+	<field name="RESULTAT DU LABO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="84" y="21" width="213" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="81fcfdf5-621c-4c76-b809-52f9d88f2580"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROVINCE DU NORD-KIVU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="84" y="41" width="213" height="24" forecolor="#FFFFFF" backcolor="#660066" uuid="6fffca78-1ae1-4403-98a1-11f8a532f080"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REGINA DE LA PACE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="65" width="381" height="20" forecolor="#FFFFFF" backcolor="#330033" uuid="79c2308f-4e52-46ca-bdac-bac05a975d89"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[RESULTAT LABORATOIRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="84" y="1" width="213" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="7a555b29-deda-4494-a7d9-e30489d57de2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPUBLIQUE DEMOCRATIQUE DU CONGO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="381" height="85" uuid="bd72094d-0624-4d2a-8cba-3b47406b9cc7"/>
+			</rectangle>
+			<image>
+				<reportElement x="0" y="0" width="84" height="64" uuid="0ffdcfd8-2d34-4a62-90dd-12a2aee6532d"/>
+				<imageExpression><![CDATA["F:\\NetBeansProjects\\Medical\\src\\Rapport\\LOGO.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="297" y="0" width="84" height="64" uuid="bc5542b0-d6b2-4bda-a466-36dbca7956a7"/>
+				<imageExpression><![CDATA["F:\\NetBeansProjects\\Medical\\src\\Rapport\\LOGO.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="461" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="96" height="20" uuid="6d048cc4-f747-46ae-814c-e626b0601c23"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOM DU MEDECIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="96" height="20" uuid="fc36b693-7473-4894-b543-ac6577e20336"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOM PATIENT]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="96" y="0" width="145" height="20" uuid="7b40a46a-28c1-4ac0-bbf8-151b33bbad84"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOM MEDECIN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="20" width="145" height="20" uuid="2f5d79fb-209c-423f-a7cc-80f0a81534cb"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOM DU MALADE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="61" y="40" width="180" height="20" uuid="98819a4d-8b91-48ae-b95c-a6d10f601f1c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESULTAT]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="63" width="368" height="396" uuid="2eafdbf6-300f-43e9-92f7-9c2b6ff9c685"/>
+				<textElement markup="none">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RESULTAT DU LABO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RecuPharmacie" language="groovy" pageWidth="297" pageHeight="421" columnWidth="257" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f12fa6d-5395-44fb-b772-121869aa44b3">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[select V.CODEVENTE,v.quantite,pu,v.total,Date_operation,nom_produit,nom,[TOTACH].TOTAL from vente v
+ inner join IDENTITE on IDENTITE.ID=v.code_personne inner join
+PHARMACIE on PHARMACIE.ID=v.id inner join TOTACH on TOTACH.CODE_PATIENT=IDENTITE.id]]>
+	</queryString>
+	<field name="CODEVENTE" class="java.lang.Integer"/>
+	<field name="quantite" class="java.lang.Double"/>
+	<field name="pu" class="java.lang.Double"/>
+	<field name="total" class="java.lang.Double"/>
+	<field name="Date_operation" class="java.lang.String"/>
+	<field name="nom_produit" class="java.lang.String"/>
+	<field name="nom" class="java.lang.String"/>
+	<variable name="total_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="57" y="22" width="145" height="14" forecolor="#FFFFFF" backcolor="#660066" uuid="23ed3d71-645f-48f6-8e55-a0bc46059be1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REGINA DE LA PACE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="36" width="257" height="20" forecolor="#FFFFFF" backcolor="#330033" uuid="06cbc67a-5cd4-49af-9989-4c63e73f1e6f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[PHARMACIE MEDICALE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="57" y="0" width="145" height="10" forecolor="#FFFFFF" backcolor="#006699" uuid="c6f2d861-ebf9-4708-b5c4-369a936ec286"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPUBLIQUE DEMOCRATIQUE DU CONGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="57" y="10" width="145" height="12" forecolor="#FFFFFF" backcolor="#006699" uuid="6485759f-b77a-4481-b865-6996f74d6ce0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROVINCE DU NORD-KIVU]]></text>
+			</staticText>
+			<image>
+				<reportElement x="2" y="-1" width="55" height="36" uuid="fbd396bc-aaaa-4433-80e4-97d50826f17a"/>
+				<imageExpression><![CDATA[".\\LOGO.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="203" y="0" width="55" height="36" uuid="67380637-8d31-4bbe-afda-7678c56e596b"/>
+				<imageExpression><![CDATA[".\\LOGO.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="34">
+			<staticText>
+				<reportElement x="1" y="1" width="28" height="16" uuid="4dda444f-25b0-4d5f-8523-cbd0a1a506f4"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Nom]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="1" width="53" height="16" uuid="cfe6a6c7-ee51-4cdb-a328-87dae0ee1823"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ Facture N°]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="29" y="0" width="63" height="16" uuid="a857cfd5-9789-440e-b3a4-b4a2d2d92fc8"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="146" y="0" width="15" height="16" uuid="8719214b-2e08-42e2-818b-cd288a1ab00c"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODEVENTE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="15" y="17" width="87" height="17" uuid="11dbd3fe-119d-48c7-80cc-4c52e07c63a5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOM PRODUIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="17" width="14" height="17" uuid="0ee372ae-7f95-4a1c-81c2-9c8308796a69"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="17" width="41" height="17" uuid="22c3feaf-eb32-4325-8372-7085cfa76d8f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QUANTITE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="17" width="60" height="17" uuid="3657402d-fb66-47a1-b1e6-06d5a5b7b796"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRIX UNITAIRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="17" width="55" height="17" uuid="80e8f5c3-65f6-4f9e-9a60-27de769cddcf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="192" y="1" width="65" height="15" uuid="d801a2b6-f826-40cd-abf2-f75844aab930"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Date_operation}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="0" width="13" height="15" uuid="2f325fb8-9a6d-4a60-bc80-cb27ba073714"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="0" width="87" height="15" uuid="2637ad2e-863d-4cb6-9462-7082e1598f07"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom_produit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="0" width="41" height="15" uuid="fdba8207-25c3-4a70-90e9-f9a1804ef22d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="142" y="0" width="60" height="15" uuid="db3e4069-f8e8-4d55-ac41-8240acf38678"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="202" y="0" width="54" height="15" uuid="f872fc65-3b61-4416-83c1-e593594f0423"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="22">
+			<textField>
+				<reportElement x="203" y="1" width="54" height="20" uuid="503808db-032b-402f-8ebb-d448c1db3b32"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="127" y="1" width="75" height="20" uuid="a7aa9659-cd8b-4456-8590-7c90e3552a96"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL GENERAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="0" width="256" height="1" uuid="f4f7774b-5c0b-410b-bf43-f19abffe95ce"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
